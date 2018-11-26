@@ -16,7 +16,7 @@ public class WebDispatcherServletInitializer extends AbstractAnnotationConfigDis
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{spring.WebConfig.class};
+        return new Class<?>[]{spring.WebConfig.class,SocketConfig.class};
     }
 
     @Override
@@ -24,7 +24,7 @@ public class WebDispatcherServletInitializer extends AbstractAnnotationConfigDis
         return new String[]{"/"};
     }
     
-    @Override  
+    @Override
     protected Filter[] getServletFilters() {  
     	CharacterEncodingFilter charFilter = new CharacterEncodingFilter();
         charFilter.setEncoding("UTF-8");
@@ -32,5 +32,5 @@ public class WebDispatcherServletInitializer extends AbstractAnnotationConfigDis
         
     	HiddenHttpMethodFilter hiddenHttpMethodFilter = new HiddenHttpMethodFilter(); 
         return new Filter[] {hiddenHttpMethodFilter,charFilter};  
-    } 
+    }
 }

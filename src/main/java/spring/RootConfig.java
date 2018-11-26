@@ -15,7 +15,7 @@ import javax.sql.DataSource;
  **/
 @Configuration
 @Import({JpaConfiguration.class})
-@ComponentScan(basePackages ={"com.dream.spring"},excludeFilters =
+@ComponentScan(basePackages ={"com.dream"},excludeFilters =
         {@ComponentScan.Filter(type= FilterType.ANNOTATION,value= EnableWebMvc.class)})
 public class RootConfig {
     @Bean

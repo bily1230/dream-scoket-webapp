@@ -1,7 +1,9 @@
 package spring;
 
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -18,7 +20,7 @@ import java.util.List;
 /**
  * Created by ning on 2017/8/20.
  */
-//@Configuration注解表明这个类是一个配置类
+
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.dream")

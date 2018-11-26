@@ -2,10 +2,11 @@ package com.dream.repository;
 
 import com.dream.domain.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+
 
 /**
  * Created by ning on 2017/9/17.

@@ -21,7 +21,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.dream.spring.repository.jpa.UserRepository")
+@EnableJpaRepositories(basePackages = "com.dream.repository.UserRepository")
 public class JpaConfiguration {
 
 	@Autowired
