@@ -24,15 +24,15 @@ public class User implements Serializable {
 	
 	@GeneratedValue
 	@Id
-    private String id;
+    private Integer id;
     private String name;
     private String age;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

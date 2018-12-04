@@ -21,6 +21,6 @@ public class UserRepository {
 
     @Transactional
     public User findUser(){
-        return  entityManagerFactory.find(User.class,"0000");
+        return  entityManagerFactory.find(User.class, 12);
     }
 }

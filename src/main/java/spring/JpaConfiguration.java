@@ -8,12 +8,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 /**
@@ -21,7 +24,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.dream.repository.UserRepository")
+@EnableJpaRepositories(basePackages = "com.dream.repository")
 public class JpaConfiguration {
 
 	@Autowired
@@ -36,7 +39,7 @@ public class JpaConfiguration {
 		adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
 		return adapter;
 	}
-	
+
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
 																	   JpaVendorAdapter jpaVendorAdapter){
@@ -54,9 +57,10 @@ public class JpaConfiguration {
 	}
 
 	@Bean
-	public DataSourceTransactionManager transactionManager(DataSource dataSource){
-		DataSourceTransactionManager txManager = new DataSourceTransactionManager();
-		txManager.setDataSource(dataSource);
+	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+
+		JpaTransactionManager txManager = new JpaTransactionManager();
+		txManager.setEntityManagerFactory(entityManagerFactory);
 		return txManager;
 	}
 }
