@@ -14,7 +14,7 @@ import javax.sql.DataSource;
  * @Date 18-11-23 下午8:33
  **/
 @Configuration
-@Import({JpaConfiguration.class})
+@Import({JpaConfiguration.class,SecurityConfig.class})
 @ComponentScan(basePackages ={"com.dream"},excludeFilters =
         {@ComponentScan.Filter(type= FilterType.ANNOTATION,value= EnableWebMvc.class)})
 public class RootConfig {
