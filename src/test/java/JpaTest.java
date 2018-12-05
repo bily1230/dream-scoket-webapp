@@ -20,13 +20,7 @@ public class JpaTest {
     private UserInterface userInterface;
     @Test
     public void save(){
-        User user = new User();
-        user.setAge("12");
-        user.setName("ning");
-        user.setId(111);
-        userInterface.save(user);
-        User user1 = userInterface.findOne("88888888");
-        System.out.println(user1.getName());
+
 
     }
 

@@ -27,15 +27,10 @@ public class TestController {
    @RequestMapping(value="/home" ,method = RequestMethod.GET)
     public String readWord(){
 
-           User user = new User();
-           user.setAge("12");
-           user.setName("ning");
-           user.setId(22);
 
-           // userInterface.save(user);
             User user1 = userRepository.findUser();
             if(user1!=null){
-                return user1.getName();
+                return user1.getUsername();
             }
             return "no data";
         }

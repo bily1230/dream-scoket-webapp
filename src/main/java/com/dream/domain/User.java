@@ -25,8 +25,8 @@ public class User implements Serializable {
 	@GeneratedValue
 	@Id
     private Integer id;
-    private String name;
-    private String age;
+    private String username;
+    private String password;
 
     public Integer getId() {
         return id;
@@ -36,19 +36,19 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPassword() {
+        return password;
     }
 
-    public String getName() {
-        return name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public String getUsername() {
+        return username;
     }
 
-    public String getAge() {
-        return age;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
