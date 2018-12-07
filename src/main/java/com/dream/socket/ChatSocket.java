@@ -13,7 +13,7 @@ import java.util.Vector;
  * @Auther nb
  * @Date 18-11-26 下午5:16
  **/
-public class TestSocket extends AbstractWebSocketHandler {
+public class ChatSocket extends AbstractWebSocketHandler {
     @Autowired
     private Container container;
 

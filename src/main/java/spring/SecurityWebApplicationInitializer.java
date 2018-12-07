@@ -8,4 +8,5 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
  * @Date 18-12-5 下午2:32
  **/
 public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplicationInitializer {
+
 }

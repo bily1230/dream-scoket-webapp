@@ -14,14 +14,18 @@ import java.util.Vector;
 public class Container {
     Vector<WebSocketSession> vectors = new Vector<>();
 
-    public synchronized void addSocketSession(WebSocketSession webSocketSession){
+    public synchronized void addSocketSession(WebSocketSession webSocketSession) {
         vectors.add(webSocketSession);
     }
 
-    public synchronized Vector getSessions(){
+    public synchronized Vector getSessions() {
         return vectors;
     }
+
     public synchronized void removeSocketSession(WebSocketSession webSocketSession) {
         vectors.remove(webSocketSession);
     }
+
+
+
 }

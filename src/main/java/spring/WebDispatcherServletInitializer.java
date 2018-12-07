@@ -1,10 +1,11 @@
 package spring;
 
-import javax.servlet.Filter;
-
+import com.dream.socket.SocketConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.Filter;
 
 /**
  *
@@ -17,7 +18,7 @@ public class WebDispatcherServletInitializer extends AbstractAnnotationConfigDis
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{spring.WebConfig.class, SocketConfig.class};
+        return new Class<?>[]{spring.WebConfig.class,SocketConfig.class};
     }
 
     @Override
