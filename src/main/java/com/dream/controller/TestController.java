@@ -3,6 +3,7 @@ package com.dream.controller;
 import com.dream.domain.User;
 import com.dream.repository.UserInterface;
 import com.dream.repository.UserRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,8 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Date 18-11-23 下午8:48
  **/
 @Controller
-@RequestMapping("/test")
-@Transactional
+@RequestMapping(value ="/test")
 public class TestController {
     @Autowired
     private UserInterface userInterface;
@@ -25,6 +25,7 @@ public class TestController {
     private UserRepository userRepository;
    @ResponseBody
    @RequestMapping(value="/home" ,method = RequestMethod.GET)
+   @ApiOperation(value = "用户")
     public String readWord(){
 
 

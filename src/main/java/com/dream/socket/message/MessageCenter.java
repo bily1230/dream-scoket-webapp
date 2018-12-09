@@ -56,7 +56,7 @@ public class MessageCenter extends AutoRunnable {
         synchronized (sessions){
             sessionArr = sessions.toArray(new WebSocketSession[0]);
         }
-        Arrays.stream(sessionArr).forEach(s-> this.executorService.execute(new NotifyTask(message, s)));
+      //  Arrays.stream(sessionArr).forEach(s-> this.executorService.execute(new NotifyTask(message, s)));
 
     }
 
