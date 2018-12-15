@@ -1,14 +1,13 @@
 package com.dream.service.impl;
 
+import com.dream.domain.User;
 import com.dream.repository.UserInterface;
 import com.dream.service.UserService;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,12 +20,22 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserInterface userInterface;
 
-    @Override
-    public User findUserByName(String userName) {
-       // com.dream.domain.User user = userInterface.findUserByUsername(userName);
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        return new User(userName, "admin", grantedAuthorities);
 
+    @Override
+    public List<User> getUserList() {
+        Iterable<User> iterable = userInterface.findAll();
+        List<User> users = Lists.newArrayList(iterable);
+        return users;
+    }
+
+    @Override
+    public User findUserByUserName(String name) {
+        return userInterface.findUserByUsername(name);
+    }
+
+    @Override
+    @Transactional
+    public User createUser(User user) {
+        return userInterface.save(user);
     }
 }

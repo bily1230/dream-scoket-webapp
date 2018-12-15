@@ -25,6 +25,7 @@ public class User implements Serializable {
 	@GeneratedValue
 	@Id
     private Integer id;
+	private String nickname;
     private String username;
     private String password;
 
@@ -50,5 +51,13 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

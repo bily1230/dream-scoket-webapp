@@ -1,6 +1,5 @@
 package com.dream.security;
 
-import com.dream.service.UserService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,15 +12,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  **/
 public class UserDetailsServiceSecurity implements UserDetailsService {
 
-    private final UserService userService;
+    private final UserServiceSecurity userServiceSecurity;
 
-    public UserDetailsServiceSecurity(UserService userService){
-        this.userService = userService;
+    public UserDetailsServiceSecurity(UserServiceSecurity userServiceSecurity) {
+        this.userServiceSecurity = userServiceSecurity;
     }
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userService.findUserByName(userName);
+        User user = userServiceSecurity.finadUserByUserName(userName);
         if (null != user) {
             return user;
         }

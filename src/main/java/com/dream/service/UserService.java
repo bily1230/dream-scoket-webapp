@@ -1,7 +1,9 @@
 package com.dream.service;
 
 
-import org.springframework.security.core.userdetails.User;
+import com.dream.domain.User;
+
+import java.util.List;
 
 /**
  * @Description TODO.
@@ -10,5 +12,9 @@ import org.springframework.security.core.userdetails.User;
  **/
 public interface UserService {
 
-    User findUserByName(String name);
+    List<User> getUserList();
+
+    User findUserByUserName(String name);
+
+    com.dream.domain.User createUser(com.dream.domain.User user);
 }
