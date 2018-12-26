@@ -1,9 +1,9 @@
 package com.dream;
 
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import org.springframework.test.context.junit4.SpringRunner;
 import spring.RootConfigTest;
 
 /**
@@ -12,8 +12,8 @@ import spring.RootConfigTest;
  * @Date 18-12-26 上午10:17
  **/
 
+@ExtendWith(SpringExtension.class)
 @SpringJUnitConfig(RootConfigTest.class)
-@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {RootConfigTest.class})
 public class AbstractTest {
 }
