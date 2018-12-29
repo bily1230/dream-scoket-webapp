@@ -26,23 +26,8 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.dream")
-@Import({SwaggerConfig.class, SocketConfig.class})
-
-public class WebConfig extends WebMvcConfigurerAdapter{
-
-    /**
-     * swagger
-     * @param registry
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
+@ComponentScan("com.dream.controller")
+public class WebConfigTest extends WebMvcConfigurerAdapter{
 
     @Bean
     public ViewResolver viewResolver(){

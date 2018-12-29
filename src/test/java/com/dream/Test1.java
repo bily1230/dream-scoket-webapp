@@ -27,6 +27,8 @@ public class Test1{
     @Test
     public void getName() {
 
+
+
         List<User> list = userService.getUserList();
         System.out.println(list.size());
     }

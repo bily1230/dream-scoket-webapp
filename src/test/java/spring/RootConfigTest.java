@@ -15,7 +15,7 @@ import javax.sql.DataSource;
  * @Date 18-12-25 下午3:45
  **/
 @Configuration
-@ComponentScan({"com.dream.service", "com.dream.repository", "com.dream.domain", "com.dream.utils"})
+@ComponentScan({"com.dream.service","com.dream.controller", "com.dream.repository", "com.dream.domain", "com.dream.utils"})
 @Import({JpaConfiguration.class})
 public class RootConfigTest {
     @Bean

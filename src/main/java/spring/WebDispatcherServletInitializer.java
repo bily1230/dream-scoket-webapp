@@ -18,7 +18,7 @@ public class WebDispatcherServletInitializer extends AbstractAnnotationConfigDis
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{spring.WebConfig.class,SocketConfig.class};
+        return new Class<?>[]{spring.WebConfig.class};
     }
 
     @Override

@@ -37,6 +37,7 @@ public class UserController {
     @ApiOperation(value = "根据用户名获取用户信息")
     @ApiImplicitParams(@ApiImplicitParam(paramType = "query", name = "username", required = true, dataType = "String"))
     public User getUserByName(@RequestParam String username) {
+
         return userService.findUserByUserName(username);
     }
 
