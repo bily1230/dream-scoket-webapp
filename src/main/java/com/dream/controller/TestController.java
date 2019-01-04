@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Description TODO.
@@ -26,13 +27,17 @@ public class TestController {
     @Autowired
     private UserService userService;
 
-    @ResponseBody
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @ApiOperation(value = "获取用户信息")
     @ApiImplicitParams({@ApiImplicitParam(name = "name", defaultValue = "小明", required = false), @ApiImplicitParam(name = "age", defaultValue = "王三", required = false)})
-    public String getUser() {
+    public ModelAndView getUser() {
 
-        return "false";
+        User user = userService.findUserByUserName("ningbin");
+        System.out.println(user);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("test");
+        modelAndView.addObject("user", user);
+        return modelAndView;
 
     }
 
