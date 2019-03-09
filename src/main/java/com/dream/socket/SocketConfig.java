@@ -18,27 +18,27 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class SocketConfig implements WebSocketConfigurer {
 
-    @Nullable
-    private TaskScheduler scheduler;
+	@Nullable
+	private TaskScheduler scheduler;
 
-    @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(testSocket(), "/chatSocket");
-    }
+	@Override
+	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+		registry.addHandler(chatSocket(), "/chatSocket", "/chatSocket/{}");
+	}
 
-    @Bean
-    @Nullable
-    public TaskScheduler defaultSockJsTaskScheduler() {
-            ThreadPoolTaskScheduler threadPoolScheduler = new ThreadPoolTaskScheduler();
-            threadPoolScheduler.setThreadNamePrefix("SockJS-");
-            threadPoolScheduler.setPoolSize(Runtime.getRuntime().availableProcessors());
-            threadPoolScheduler.setRemoveOnCancelPolicy(true);
-            this.scheduler = threadPoolScheduler;
-        return this.scheduler;
-    }
+	@Bean
+	@Nullable
+	public TaskScheduler defaultSockJsTaskScheduler() {
+		ThreadPoolTaskScheduler threadPoolScheduler = new ThreadPoolTaskScheduler();
+		threadPoolScheduler.setThreadNamePrefix("SockJS-");
+		threadPoolScheduler.setPoolSize(Runtime.getRuntime().availableProcessors());
+		threadPoolScheduler.setRemoveOnCancelPolicy(true);
+		this.scheduler = threadPoolScheduler;
+		return this.scheduler;
+	}
 
-    @Bean
-    public ChatSocket testSocket() {
-        return new ChatSocket();
-    }
+	@Bean
+	public ChatSocket chatSocket() {
+		return new ChatSocket();
+	}
 }

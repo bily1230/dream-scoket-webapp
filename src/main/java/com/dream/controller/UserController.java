@@ -22,24 +22,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    @ResponseBody
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    @ApiOperation(value = "创建用户")
-    public User create(User user) {
-        return userService.createUser(user);
-    }
+	@ResponseBody
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	@ApiOperation(value = "创建用户")
+	public User create(User user) {
+		return userService.createUser(user);
+	}
 
-    @ResponseBody
-    @RequestMapping(value = "/getUserByName", method = RequestMethod.GET)
-    @ApiOperation(value = "根据用户名获取用户信息")
-    @ApiImplicitParams(@ApiImplicitParam(paramType = "query", name = "username", required = true, dataType = "String"))
-    public User getUserByName(@RequestParam String username) {
+	@ResponseBody
+	@RequestMapping(value = "/getUserByName", method = RequestMethod.GET)
+	@ApiOperation(value = "根据用户名获取用户信息")
+	@ApiImplicitParams(@ApiImplicitParam(paramType = "query", name = "username", required = true, dataType = "String"))
+	public User getUserByName(@RequestParam String username) {
 
-        return userService.findUserByUserName(username);
-    }
+		return userService.findUserByUserName(username);
+	}
 
 
 }
