@@ -48,6 +48,8 @@ public class Container {
 			public void run() {
 				try {
 					AccessInfo accessInfo = queue.take();
+					long time = accessInfo.getEndTime() - accessInfo.getStartTime();
+					System.out.println("***:" + accessInfo.getMethod() + "----" + time);
 				} catch (InterruptedException e) {
 					LOGGER.error("thread is interrupt");
 				}
@@ -58,6 +60,15 @@ public class Container {
 	public void stop() {
 		executorService.shutdown();
 	}
+
+	public void saveInfo(AccessInfo accessInfo){
+		try {
+			queue.put(accessInfo);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 
 }

@@ -8,6 +8,7 @@ package com.dream.interceptor;
 import com.dream.domain.AccessInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.method.HandlerMethod;
@@ -27,6 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 public class AccessInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AccessInterceptor.class);
 
+	@Autowired
+	private Container container;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -61,7 +64,7 @@ public class AccessInterceptor extends HandlerInterceptorAdapter {
 		AccessInfo accessInfo = AccessHolder.getAccessInfo();
 		accessInfo.setEndTime(System.currentTimeMillis());
 		long time = accessInfo.getEndTime() - accessInfo.getStartTime();
-		System.out.println("***:" + accessInfo.getMethod() + "----" + time);
+		container.saveInfo(accessInfo);
 	}
 }
 
