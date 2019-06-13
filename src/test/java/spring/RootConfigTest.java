@@ -1,5 +1,7 @@
 package spring;
 
+import com.dream.redis.RedisConfig;
+import com.dream.session.SessionConfig;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,17 +17,17 @@ import javax.sql.DataSource;
  * @Date 18-12-25 下午3:45
  **/
 @Configuration
-@ComponentScan({"com.dream.service","com.dream.controller", "com.dream.repository", "com.dream.domain", "com.dream.utils"})
-@Import({JpaConfiguration.class})
+@ComponentScan({"com.dream.service", "com.dream.redis", "com.dream.controller", "com.dream.repository", "com.dream.domain", "com.dream.utils"})
+@Import({JpaConfiguration.class, RedisConfig.class, SessionConfig.class})
 public class RootConfigTest {
-    @Bean
-    public DataSource dataSource() throws NamingException {
-        BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://47.98.251.14:3306/dream?autoReconnect=true");
-        ds.setUsername("admin");
-        ds.setPassword("303admin");
-        return ds;
-    }
+	@Bean
+	public DataSource dataSource() throws NamingException {
+		BasicDataSource ds = new BasicDataSource();
+		ds.setDriverClassName("com.mysql.jdbc.Driver");
+		ds.setUrl("jdbc:mysql://47.98.251.14:3306/dream?autoReconnect=true");
+		ds.setUsername("admin");
+		ds.setPassword("303admin");
+		return ds;
+	}
 
 }

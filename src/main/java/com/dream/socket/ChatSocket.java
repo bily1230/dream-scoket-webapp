@@ -14,28 +14,28 @@ import java.util.Vector;
  * @Date 18-11-26 下午5:16
  **/
 public class ChatSocket extends AbstractWebSocketHandler {
-    @Autowired
-    private Container container;
+	@Autowired
+	private SocketContainer socketContainer;
 
 
-    @Override
-    public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        Vector<WebSocketSession> vectors = container.getSessions();
-        for(WebSocketSession session1 : vectors){
-            session1.sendMessage(message);
-        }
-    }
+	@Override
+	public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		Vector<WebSocketSession> vectors = socketContainer.getSessions();
+		for (WebSocketSession session1 : vectors) {
+			session1.sendMessage(message);
+		}
+	}
 
-    @Override
-    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        container.addSocketSession(session);
-    }
+	@Override
+	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		socketContainer.addSocketSession(session);
+	}
 
 
-    @Override
-    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        container.removeSocketSession(session);
-    }
+	@Override
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		socketContainer.removeSocketSession(session);
+	}
 
 
 }
