@@ -20,6 +20,8 @@ import java.io.Serializable;
 @Entity
 public class AccessInfo implements Serializable {
 
+
+	private static final long serialVersionUID = -2823929355022606631L;
 	@GeneratedValue
 	@Id
 	private Integer id;

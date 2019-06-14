@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -31,7 +30,7 @@ public class JpaConfiguration {
 	private DataSource dataSource;
 
 	@Bean
-	public JpaVendorAdapter jpaVendorAdapter(){
+	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.MYSQL);
 		adapter.setShowSql(true);
@@ -42,8 +41,8 @@ public class JpaConfiguration {
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
-																	   JpaVendorAdapter jpaVendorAdapter){
-		LocalContainerEntityManagerFactoryBean emfb=
+	                                                                   JpaVendorAdapter jpaVendorAdapter) {
+		LocalContainerEntityManagerFactoryBean emfb =
 				new LocalContainerEntityManagerFactoryBean();
 		emfb.setDataSource(dataSource);
 		emfb.setJpaVendorAdapter(jpaVendorAdapter);
@@ -52,7 +51,7 @@ public class JpaConfiguration {
 	}
 
 	@Bean
-	public BeanPostProcessor persistenceTranslation(){
+	public BeanPostProcessor persistenceTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
 
