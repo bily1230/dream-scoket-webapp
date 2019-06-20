@@ -20,6 +20,7 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
@@ -46,6 +47,11 @@ public class RedisConfig extends CachingConfigurerSupport {
 	@Autowired
 	LettuceConnectionFactory connectionFactory;
 
+	@Bean
+	public StringRedisTemplate stringRedisTemplate() {
+		return new StringRedisTemplate(connectionFactory);
+	}
+
 
 	@Bean
 	public RedisTemplate<?, ?> redisTemplate() {
@@ -64,6 +70,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 		redisTemplate.afterPropertiesSet();
 		return redisTemplate;
 	}
+
 
 	@Bean
 	public CacheManager cacheManager() {
