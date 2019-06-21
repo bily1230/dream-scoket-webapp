@@ -209,11 +209,7 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.7.1.RELEASE</version>
-        </dependency>
+
 
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -222,6 +218,33 @@
         </dependency>
 
         <!-- session-->
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.1.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>2.1.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>2.1.6.RELEASE</version>
+        </dependency>
+
+        <!-- mongodb -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>2.1.6.RELEASE</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
@@ -251,12 +274,7 @@
             <artifactId>commons-dbcp2</artifactId>
             <version>2.1</version>
         </dependency>
-        <!-- mongodb -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>1.8.0.RELEASE</version>
-        </dependency>
+
 
         <!-- mysql -->
         <dependency>

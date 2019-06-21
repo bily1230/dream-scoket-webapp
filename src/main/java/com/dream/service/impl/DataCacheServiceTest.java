@@ -26,7 +26,7 @@ public class DataCacheServiceTest implements DataCacheService {
 	@Override
 	@Cacheable(cacheNames = "dataCache", key = "#id")
 	public DataCache findDataCacheById(Integer id) {
-		return dataCacheInterface.findOne(id);
+		return dataCacheInterface.findById(id).get();
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class DataCacheServiceTest implements DataCacheService {
 	@Override
 	@CacheEvict(cacheNames = "dataCache", key = "#id")
 	public void deleteDataCache(Integer id) {
-		dataCacheInterface.delete(id);
+		dataCacheInterface.deleteById(id);
 	}
 }
 

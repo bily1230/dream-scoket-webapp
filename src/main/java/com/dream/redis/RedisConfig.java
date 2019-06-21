@@ -8,7 +8,6 @@ import com.dream.redis.message.DefaultMessageDelegate;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mongodb.util.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
@@ -49,16 +48,17 @@ public class RedisConfig extends CachingConfigurerSupport {
 
 	@Bean
 	public StringRedisTemplate stringRedisTemplate() {
-		return new StringRedisTemplate(connectionFactory);
+		StringRedisTemplate template = new StringRedisTemplate(connectionFactory);
+		return template;
 	}
 
 
 	@Bean
-	public RedisTemplate<?, ?> redisTemplate() {
-		RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+	public RedisTemplate<String, Object> redisTemplate() {
+		RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setConnectionFactory(connectionFactory);
 		// 使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
-		Jackson2JsonRedisSerializer<JSON> serializer = new Jackson2JsonRedisSerializer<JSON>(JSON.class);
+		Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
 		mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
@@ -77,7 +77,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 		// 生成一个默认配置，通过config对象即可对缓存进行自定义配置
 		RedisSerializer<String> redisSerializer = new StringRedisSerializer();
 		// 使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
-		Jackson2JsonRedisSerializer<JSON> serializer = new Jackson2JsonRedisSerializer<JSON>(JSON.class);
+		Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer(Object.class);
 		// 配置序列化
 		RedisCacheConfiguration config = defaultCacheConfig();
 		config.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer));

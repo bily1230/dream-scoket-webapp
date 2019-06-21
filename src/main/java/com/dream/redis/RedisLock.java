@@ -11,7 +11,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * redis实现一些简单的锁.
+ * redis实现的锁.
  *
  * @author nb
  * @date 19-6-20
@@ -36,7 +36,6 @@ public class RedisLock {
 		this.redisTemplate = redisTemplate;
 		this.lockKey = lockKey;
 
-
 	}
 
 
@@ -54,12 +53,11 @@ public class RedisLock {
 			String currentValueStr = redisTemplate.opsForValue().get(lockKey);
 			if (StringUtils.isNotBlank(currentValueStr) && Long.parseLong(currentValueStr) < System.currentTimeMillis()) {
 				String oldValueStr = redisTemplate.opsForValue().getAndSet(lockKey, expiresStr);
-				if (StringUtils.isNotBlank(oldValueStr) && oldValueStr.endsWith(currentValueStr)) {
+				if (StringUtils.equals(oldValueStr, currentValueStr)) {
 					this.isLocked = Boolean.TRUE;
 					break;
 				}
 			}
-
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException ie) {
