@@ -10,21 +10,18 @@ public class Message {
 	private String name;
 	private MessageType type;
 	private String content;
-
-	public void Message() {
-
+	public  Message() {
 	}
-
-	public void Message(String name) {
+	public  Message(String name) {
 		this.name = name;
 	}
 
-	public void Message(String name, MessageType type) {
+	public  Message(String name, MessageType type) {
 		this.name = name;
 		this.type = type;
 	}
 
-	public void Message(String name, MessageType type, String content) {
+	public  Message(String name, MessageType type, String content) {
 		this.name = name;
 		this.type = type;
 		this.content = content;
@@ -32,11 +29,11 @@ public class Message {
 
 	@Override
 	public String toString() {
-		StringBuilder toString = new StringBuilder();
-		toString.append("name:").append(this.name).append(";")
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("name:").append(this.name).append(";")
 				.append("type:").append(this.type).append(";")
 				.append("content:").append(this.content).append(";");
-		return super.toString();
+		return stringBuilder.toString();
 	}
 
 	public String getName() {
